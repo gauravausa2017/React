@@ -34,8 +34,8 @@
             <input type='button' value='Reset Calculator' onclick=""   />
 
             <br/>
-            <input type='button' value='Sum'  onclick="" />
-            <input type='button' value='Average' onclick="" />
+            <input type='button' value='Sum'  onclick="addNumbers()" />
+            <input type='button' value='Average' onclick="avgNumbers()" />
             <input type='button' value='Find Min'  />
 
         </div>
@@ -51,8 +51,9 @@
         ul.appendChild(li);
     }
 
-    function addNumbers(num){
-        sum = sum + num;
+    function addNumbers(){
+        var num = document.getElementById("number").value;
+        sum = parseInt(sum) + parseInt(num);
         var con = document.getElementById("console");
         var sp = document.createElement('span');
         sp.appendChild(document.createTextNode(sum));
@@ -60,11 +61,11 @@
     }
 
     function avgNumbers(){
-        var avg = sum/numbersArray.length;
+        var avg = parseInt(sum)/parseInt(numbersArray.length);
         var con = document.getElementById("console");
         var sp = document.createElement('span');
-        sp.appendChild(document.createTextNode(number));
-        con.appendChild(avg);
+        sp.appendChild(document.createTextNode(avg));
+        con.appendChild(sp);
     }
 
 
