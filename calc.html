@@ -1,0 +1,97 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+
+    <style>
+        fieldset {
+            width: 60%;
+            margin: 20px;
+        }
+    </style>
+
+<script>
+    var numbersArray = [];
+    var sum = 0;
+</script>   
+
+</head>
+
+<body>
+    <fieldset>
+        <legend>Toolbar</legend>
+        <div>
+            Number
+            <input type='text' id='number' />
+            <input type='button' value='Add To List' onclick="showNumbers()"  />
+            <input type='button' value='Clear Display' onclick='' />
+            <input type='button' value='Reset Calculator' onclick=""   />
+
+            <br/>
+            <input type='button' value='Sum'  onclick="" />
+            <input type='button' value='Average' onclick="" />
+            <input type='button' value='Find Min'  />
+
+        </div>
+
+    </fieldset>
+<script>
+    function showNumbers(){
+        var number = document.getElementById("number").value;
+        numbersArray.push(number);
+        var ul = document.getElementById("numberList");
+        var li = document.createElement('li');
+        li.appendChild(document.createTextNode(number));
+        ul.appendChild(li);
+    }
+
+    function addNumbers(num){
+        sum = sum + num;
+        var con = document.getElementById("console");
+        var sp = document.createElement('span');
+        sp.appendChild(document.createTextNode(sum));
+        con.appendChild(sp);
+    }
+
+    function avgNumbers(){
+        var avg = sum/numbersArray.length;
+        var con = document.getElementById("console");
+        var sp = document.createElement('span');
+        sp.appendChild(document.createTextNode(number));
+        con.appendChild(avg);
+    }
+
+
+</script>
+    <hr/>
+
+    <fieldset>
+        <legend>Console</legend>
+
+        <div id='console'>
+
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>Number List</legend>
+
+        <ul id='numberList'>
+
+        </ul>
+
+        <input type='button' value='refresh list'  />
+    </fieldset>
+
+
+   
+</body>
+
+</html>
