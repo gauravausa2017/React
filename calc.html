@@ -30,20 +30,20 @@
             Number
             <input type='text' id='number' />
             <input type='button' value='Add To List' onclick="showNumbers()"  />
-            <input type='button' value='Clear Display' onclick='' />
-            <input type='button' value='Reset Calculator' onclick=""   />
+            <input type='button' value='Clear Display' onclick="clear()" />
+            <input type='button' value='Reset Calculator' onclick="reset()"   />
 
             <br/>
             <input type='button' value='Sum'  onclick="addNumbers()" />
             <input type='button' value='Average' onclick="avgNumbers()" />
-            <input type='button' value='Find Min'  />
+            <input type='button' value='Find Min' onclick="minNumber()" />
 
         </div>
 
     </fieldset>
 <script>
     function showNumbers(){
-        var number = document.getElementById("number").value;
+        var number = parseInt(document.getElementById("number").value);
         numbersArray.push(number);
         var ul = document.getElementById("numberList");
         var li = document.createElement('li');
@@ -56,7 +56,7 @@
         sum = parseInt(sum) + parseInt(num);
         var con = document.getElementById("console");
         var sp = document.createElement('span');
-        sp.appendChild(document.createTextNode(sum));
+        sp.appendChild(document.createTextNode('sum : '+sum));
         con.appendChild(sp);
     }
 
@@ -64,10 +64,30 @@
         var avg = parseInt(sum)/parseInt(numbersArray.length);
         var con = document.getElementById("console");
         var sp = document.createElement('span');
-        sp.appendChild(document.createTextNode(avg));
+        sp.appendChild(document.createTextNode('avg : '+avg));
         con.appendChild(sp);
     }
 
+    function minNumber(){
+        var min = Math.min(...numbersArray);
+        var con = document.getElementById("console");
+        var sp = document.createElement('span');
+        sp.appendChild(document.createTextNode('min : '+min));
+        con.appendChild(sp);
+    }
+
+    function clear(){
+        document.getElementById("console").innerHTML="";
+        document.getElementById("numberList").innerHTML="";
+
+    }
+
+    function reset(){
+        clear();
+        sum = 0;
+        numbersArray = [];
+
+    }
 
 </script>
     <hr/>
